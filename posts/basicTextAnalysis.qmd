@@ -1,0 +1,6 @@
+---
+title: "basicTextAnalysis"
+author: "Brian Leung"
+date: "2024-02-21"
+categories: [news, code, analysis]
+---
