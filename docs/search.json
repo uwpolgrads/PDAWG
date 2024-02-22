@@ -32,6 +32,27 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "Post With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nFeb 21, 2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nFeb 18, 2024\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "basicTextAnalysis\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nFeb 21, 2024\n\n\nBrian Leung\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/basicTextAnalysis.html",
+    "href": "posts/basicTextAnalysis.html",
+    "title": "basicTextAnalysis",
+    "section": "",
+    "text": "This is a basic template\n\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Schedule",
+    "section": "",
+    "text": "Date\nPresenter\nProposed topic\n\n\n\n\n02/21/2024\nBrian Leung\nGetting started\n\n\n…\n…\n…\n\n\n…\n…\n…\n\n\n…\n…\n…\n\n\n…\n…\n…"
+  },
+  {
+    "objectID": "posts/1.gettingStarted/basicTextAnalysis.html",
+    "href": "posts/1.gettingStarted/basicTextAnalysis.html",
+    "title": "basicTextAnalysis",
+    "section": "",
+    "text": "This is a basic template\n\nlibrary(tidyverse)"
   }
 ]

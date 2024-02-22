@@ -3,4 +3,12 @@ title: "basicTextAnalysis"
 author: "Brian Leung"
 date: "2024-02-21"
 categories: [news, code, analysis]
+message: false
+warning: false
 ---
+
+This is a basic template
+
+```{r}
+library(tidyverse)
+```

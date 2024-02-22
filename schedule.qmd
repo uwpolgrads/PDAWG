@@ -1,0 +1,13 @@
+---
+title: "Schedule"
+page-layout: full
+title-block-banner: true
+---
+
+| Date       | Presenter   | Proposed topic  |
+|------------|-------------|-----------------|
+| 02/21/2024 | Brian Leung | Getting started |
+| ...        | ...         | ...             |
+| ...        | ...         | ...             |
+| ...        | ...         | ...             |
+| ...        | ...         | ...             |

@@ -7,6 +7,7 @@ website:
   navbar:
     right:
       - blog.qmd
+      - schedule.qmd
       - literature.qmd
       - resources.qmd
       - about.qmd
