@@ -2,13 +2,70 @@
 title: "Getting started"
 author: "Brian Leung"
 date: "2024-02-21"
-categories: [news, code, analysis]
+categories: [news] # code # R # Python # text classification 
 message: false
 warning: false
 ---
 
-This is a basic template
+Welcome to P-DAWG! This post introduces us to how to use Quarto (`.qmd`) to write a blog-like document that integrates `R` or `Python` code with text!
+
+You can open a new Quarto Document (`.qmd`) in Rstudio and choose `HTML` as the format. This works just like a traditional RMarkdown file (`.rmd`).
+
+You can copy and paste the following code to the preamble (i.e., top of the document) and fill out the details:
+
+```         
+---
+title: "Give it a nice title"
+author: "Your good name"
+date: "today is?"
+categories: [tag1, tag2, tag3...] 
+message: false 
+warning: false
+---
+```
+
+Inside the `.qmd` document, you can type text anywhere you like. To insert a code, type "/" to select options from a drop-down menu (if you are using Visual editor mode). For example, I can insert the following `R` code chunk:
 
 ```{r}
 library(tidyverse)
+```
+
+Then you can perform data analysis as usual:
+
+```{r}
+data(iris)
+
+iris %>%
+  group_by(Species) %>%
+  summarize(across(where(is.numeric), mean))
+```
+
+Visualization is also easy:
+
+```{r}
+ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
+  geom_point() +
+  theme_minimal()
+```
+
+Quarto document has the advantage of being able to run `Python` code at the same time. To do that from a `RStudio` environment, you have to first install `reticulate` package in R by running `install.packages("reticulate")`
+
+```{r}
+library(reticulate)
+
+# create a new environment 
+virtualenv_create("r-reticulate")
+
+# install SciPy
+virtualenv_install("r-reticulate", "scipy")
+
+use_virtualenv("r-reticulate")
+
+# import SciPy (it will be automatically discovered in "r-reticulate")
+scipy <- import("scipy")
+```
+
+```{python}
+import scipy
+
 ```
