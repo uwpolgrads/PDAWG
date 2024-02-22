@@ -9,7 +9,7 @@
 <meta name="author" content="Brian Leung">
 <meta name="dcterms.date" content="2024-02-21">
 
-<title>Political Document Analysis Working Group (P-DAWG)Department of Political Science, UW - Getting started</title>
+<title>Political Document Analysis Working Group (P-DAWG)Department of Political Science, UW - How to write a blog post with R or Python code?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -153,9 +153,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Getting started</h1>
+      <h1 class="title">How to write a blog post with R or Python code?</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">news</div>
+                <div class="quarto-category">code</div>
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">Python</div>
               </div>
                   </div>
   </div>
@@ -191,18 +194,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>Welcome to P-DAWG! This post introduces us to how to use Quarto (<code>.qmd</code>) to write a blog-like document that integrates <code>R</code> or <code>Python</code> code with text!</p>
+<p>Welcome to P-DAWG! This post introduces us to how to use Quarto (<code>.qmd</code>) to write a blog-style document that integrates <code>R</code> or <code>Python</code> code with text!</p>
+<section id="quarto-.qmd-is-just-like-rmarkdown-.rmd" class="level2">
+<h2 class="anchored" data-anchor-id="quarto-.qmd-is-just-like-rmarkdown-.rmd">Quarto (<code>.qmd</code>) is just like RMarkdown (<code>.rmd</code>)!</h2>
 <p>You can open a new Quarto Document (<code>.qmd</code>) in Rstudio and choose <code>HTML</code> as the format. This works just like a traditional RMarkdown file (<code>.rmd</code>).</p>
 <p>You can copy and paste the following code to the preamble (i.e., top of the document) and fill out the details:</p>
 <pre><code>---
 title: "Give it a nice title"
 author: "Your good name"
-date: "today is?"
+date: "today is..."
 categories: [tag1, tag2, tag3...] 
 message: false 
 warning: false
 ---</code></pre>
-<p>Inside the <code>.qmd</code> document, you can type text anywhere you like. To insert a code chunk (or table, bullet points, etc.), type “/” to select options from a drop-down menu. For example, I can insert the following <code>R</code> code chunk:</p>
+</section>
+<section id="working-with-r-code" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-r-code">Working with <code>R</code> code</h2>
+<p>Inside the <code>.qmd</code> document, you can type text anywhere you like. To insert a code, type “/” to select options from a drop-down menu (if you are using Visual editor mode). For example, I can insert the following <code>R</code> code chunk:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -228,15 +236,69 @@ warning: false
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="gettingStarted_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<p><img src="GettingStarted_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Quarto document has the advantage of being able to run <code>Python</code> code at the same time. To do that from a <code>RStudio</code> environment, you have to first install <code>reticulate</code> package in R by running <code>install.packages("reticulate")</code></p>
+</section>
+<section id="working-with-python-code" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-python-code">Working with <code>Python</code> code</h2>
+<p>Quarto document has the advantage of being able to run <code>Python</code> code at the same time. But this does requies some knowledge about the language, and especially how virtual environment works for managing packages.</p>
+<p>To do that from a <code>RStudio</code> environment, you have to first install <code>reticulate</code> package in R by running <code>install.packages("reticulate").</code></p>
+<p>After loading <code>reticulate</code>, you can create a virtual environment and install the required <code>Python</code> packages/modules:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#import pandas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new environment </span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">virtualenv_create</span>(<span class="st">"r-reticulate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>virtualenv: r-reticulate</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># packages to install </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"numpy"</span>, <span class="st">"pandas"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># install packages to the environment</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">virtualenv_install</span>(<span class="st">"r-reticulate"</span>, packages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Using virtual environment 'r-reticulate' ...</code></pre>
+</div>
+</div>
+<p>You might have to go to <code>Options &gt; Python &gt; Virtual Environment</code>, and then select the correct interpreter.</p>
+<p>Now, you can run <code>Python</code> code! One advantage of doing it in the Quarto document (with <code>reticulate</code> package) is that you can reference and transport <code>R</code> object directly into the <code>Python</code> environment by calling <code>r.object_name:</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> r.iris</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>iris_groupMean <span class="op">=</span> iris.groupby([<span class="st">'Species'</span>]).mean()</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>iris_groupMean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Sepal.Length  Sepal.Width  Petal.Length  Petal.Width
+Species                                                         
+setosa             5.006        3.428         1.462        0.246
+versicolor         5.936        2.770         4.260        1.326
+virginica          6.588        2.974         5.552        2.026</code></pre>
+</div>
+</div>
+<p>You can do the reverse by referencing the <code>Python</code> object in the <code>R</code> environment by calling <code>py$object_name</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(py<span class="sc">$</span>iris_groupMean) <span class="co"># back to R code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 3
+Columns: 4
+$ Sepal.Length &lt;dbl&gt; 5.006, 5.936, 6.588
+$ Sepal.Width  &lt;dbl&gt; 3.428, 2.770, 2.974
+$ Petal.Length &lt;dbl&gt; 1.462, 4.260, 5.552
+$ Petal.Width  &lt;dbl&gt; 0.246, 1.326, 2.026</code></pre>
+</div>
+</div>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Quarto document <code>.qmd</code> gives us an easy way to write a blog post that seamlessly integrate text narration with code. As you as you submit a <em>minimally reproducible</em> Quarto document, your post can be published at no time.</p>
+<p>Furthermore, the <code>reticulate</code> package creates a nice interface that accommodates both <code>R</code> and <code>Python</code> code in the same document. Many state-of-the-art models and packages in NLP are written in <code>Python</code>. Hopefully, this will encourage <code>R</code> users to take advantage of <code>Python</code> modules in a familiar environment.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

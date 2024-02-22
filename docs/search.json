@@ -4,14 +4,42 @@
     "href": "index.html",
     "title": "Blog",
     "section": "",
-    "text": "Getting started\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nFeb 21, 2024\n\n\nBrian Leung\n\n\n\n\n\n\nNo matching items"
+    "text": "How to write a blog post with R or Python code?\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nR\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nFeb 21, 2024\n\n\nBrian Leung\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "posts/1.gettingStarted/gettingStarted.html",
-    "href": "posts/1.gettingStarted/gettingStarted.html",
-    "title": "Getting started",
+    "objectID": "posts/022224BL/GettingStarted.html",
+    "href": "posts/022224BL/GettingStarted.html",
+    "title": "How to write a blog post with R or Python code?",
     "section": "",
-    "text": "Welcome to P-DAWG! This post introduces us to how to use Quarto (.qmd) to write a blog-like document that integrates R or Python code with text!\nYou can open a new Quarto Document (.qmd) in Rstudio and choose HTML as the format. This works just like a traditional RMarkdown file (.rmd).\nYou can copy and paste the following code to the preamble (i.e., top of the document) and fill out the details:\n---\ntitle: \"Give it a nice title\"\nauthor: \"Your good name\"\ndate: \"today is?\"\ncategories: [tag1, tag2, tag3...] \nmessage: false \nwarning: false\n---\nInside the .qmd document, you can type text anywhere you like. To insert a code chunk (or table, bullet points, etc.), type “/” to select options from a drop-down menu. For example, I can insert the following R code chunk:\n\nlibrary(tidyverse)\n\nThen you can perform data analysis as usual:\n\ndata(iris)\n\niris %&gt;%\n  group_by(Species) %&gt;%\n  summarize(across(where(is.numeric), mean))\n\n# A tibble: 3 × 5\n  Species    Sepal.Length Sepal.Width Petal.Length Petal.Width\n  &lt;fct&gt;             &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;\n1 setosa             5.01        3.43         1.46       0.246\n2 versicolor         5.94        2.77         4.26       1.33 \n3 virginica          6.59        2.97         5.55       2.03 \n\n\nVisualization is also easy:\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +\n  geom_point() +\n  theme_minimal()\n\n\n\n\nQuarto document has the advantage of being able to run Python code at the same time. To do that from a RStudio environment, you have to first install reticulate package in R by running install.packages(\"reticulate\")\n\n#import pandas"
+    "text": "Welcome to P-DAWG! This post introduces us to how to use Quarto (.qmd) to write a blog-style document that integrates R or Python code with text!"
+  },
+  {
+    "objectID": "posts/022224BL/GettingStarted.html#quarto-.qmd-is-just-like-rmarkdown-.rmd",
+    "href": "posts/022224BL/GettingStarted.html#quarto-.qmd-is-just-like-rmarkdown-.rmd",
+    "title": "How to write a blog post with R or Python code?",
+    "section": "Quarto (.qmd) is just like RMarkdown (.rmd)!",
+    "text": "Quarto (.qmd) is just like RMarkdown (.rmd)!\nYou can open a new Quarto Document (.qmd) in Rstudio and choose HTML as the format. This works just like a traditional RMarkdown file (.rmd).\nYou can copy and paste the following code to the preamble (i.e., top of the document) and fill out the details:\n---\ntitle: \"Give it a nice title\"\nauthor: \"Your good name\"\ndate: \"today is...\"\ncategories: [tag1, tag2, tag3...] \nmessage: false \nwarning: false\n---"
+  },
+  {
+    "objectID": "posts/022224BL/GettingStarted.html#working-with-r-code",
+    "href": "posts/022224BL/GettingStarted.html#working-with-r-code",
+    "title": "How to write a blog post with R or Python code?",
+    "section": "Working with R code",
+    "text": "Working with R code\nInside the .qmd document, you can type text anywhere you like. To insert a code, type “/” to select options from a drop-down menu (if you are using Visual editor mode). For example, I can insert the following R code chunk:\n\nlibrary(tidyverse)\n\nThen you can perform data analysis as usual:\n\ndata(iris)\n\niris %&gt;%\n  group_by(Species) %&gt;%\n  summarize(across(where(is.numeric), mean))\n\n# A tibble: 3 × 5\n  Species    Sepal.Length Sepal.Width Petal.Length Petal.Width\n  &lt;fct&gt;             &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;\n1 setosa             5.01        3.43         1.46       0.246\n2 versicolor         5.94        2.77         4.26       1.33 \n3 virginica          6.59        2.97         5.55       2.03 \n\n\nVisualization is also easy:\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +\n  geom_point() +\n  theme_minimal()"
+  },
+  {
+    "objectID": "posts/022224BL/GettingStarted.html#working-with-python-code",
+    "href": "posts/022224BL/GettingStarted.html#working-with-python-code",
+    "title": "How to write a blog post with R or Python code?",
+    "section": "Working with Python code",
+    "text": "Working with Python code\nQuarto document has the advantage of being able to run Python code at the same time. But this does requies some knowledge about the language, and especially how virtual environment works for managing packages.\nTo do that from a RStudio environment, you have to first install reticulate package in R by running install.packages(\"reticulate\").\nAfter loading reticulate, you can create a virtual environment and install the required Python packages/modules:\n\nlibrary(reticulate)\n\n# create a new environment \nvirtualenv_create(\"r-reticulate\")\n\nvirtualenv: r-reticulate\n\n# packages to install \npackages &lt;- c(\"numpy\", \"pandas\")\n\n# install packages to the environment\nvirtualenv_install(\"r-reticulate\", packages)\n\nUsing virtual environment 'r-reticulate' ...\n\n\nYou might have to go to Options &gt; Python &gt; Virtual Environment, and then select the correct interpreter.\nNow, you can run Python code! One advantage of doing it in the Quarto document (with reticulate package) is that you can reference and transport R object directly into the Python environment by calling r.object_name:\n\nimport numpy as np\nimport pandas as pd\n\niris = r.iris\niris_groupMean = iris.groupby(['Species']).mean()\niris_groupMean\n\n            Sepal.Length  Sepal.Width  Petal.Length  Petal.Width\nSpecies                                                         \nsetosa             5.006        3.428         1.462        0.246\nversicolor         5.936        2.770         4.260        1.326\nvirginica          6.588        2.974         5.552        2.026\n\n\nYou can do the reverse by referencing the Python object in the R environment by calling py$object_name:\n\nglimpse(py$iris_groupMean) # back to R code\n\nRows: 3\nColumns: 4\n$ Sepal.Length &lt;dbl&gt; 5.006, 5.936, 6.588\n$ Sepal.Width  &lt;dbl&gt; 3.428, 2.770, 2.974\n$ Petal.Length &lt;dbl&gt; 1.462, 4.260, 5.552\n$ Petal.Width  &lt;dbl&gt; 0.246, 1.326, 2.026"
+  },
+  {
+    "objectID": "posts/022224BL/GettingStarted.html#conclusion",
+    "href": "posts/022224BL/GettingStarted.html#conclusion",
+    "title": "How to write a blog post with R or Python code?",
+    "section": "Conclusion",
+    "text": "Conclusion\nQuarto document .qmd gives us an easy way to write a blog post that seamlessly integrate text narration with code. As you as you submit a minimally reproducible Quarto document, your post can be published at no time.\nFurthermore, the reticulate package creates a nice interface that accommodates both R and Python code in the same document. Many state-of-the-art models and packages in NLP are written in Python. Hopefully, this will encourage R users to take advantage of Python modules in a familiar environment."
   },
   {
     "objectID": "about.html",
