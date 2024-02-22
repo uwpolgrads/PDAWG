@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Blog",
     "section": "",
-    "text": "Post With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nFeb 21, 2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nFeb 18, 2024\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Getting started\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nFeb 21, 2024\n\n\nBrian Leung\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/welcome/index.html",
@@ -52,6 +52,13 @@
     "objectID": "posts/1.gettingStarted/basicTextAnalysis.html",
     "href": "posts/1.gettingStarted/basicTextAnalysis.html",
     "title": "basicTextAnalysis",
+    "section": "",
+    "text": "This is a basic template\n\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "posts/1.gettingStarted/gettingStarted.html",
+    "href": "posts/1.gettingStarted/gettingStarted.html",
+    "title": "Getting started",
     "section": "",
     "text": "This is a basic template\n\nlibrary(tidyverse)"
   }

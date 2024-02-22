@@ -1,0 +1,14 @@
+{
+  "hash": "e0123ab6b013233778577fe0086591b4",
+  "result": {
+    "markdown": "---\ntitle: \"Getting started\"\nauthor: \"Brian Leung\"\ndate: \"2024-02-21\"\ncategories: [news, code, analysis]\nmessage: false\nwarning: false\n---\n\n\nThis is a basic template\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

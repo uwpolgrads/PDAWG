@@ -1,5 +1,5 @@
 ---
-title: "basicTextAnalysis"
+title: "Getting started"
 author: "Brian Leung"
 date: "2024-02-21"
 categories: [news, code, analysis]

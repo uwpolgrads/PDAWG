@@ -6,7 +6,7 @@ website:
   title: "Political Document Analysis Working Group (P-DAWG)"
   navbar:
     right:
-      - blog.qmd
+      - index.qmd
       - schedule.qmd
       - literature.qmd
       - resources.qmd
