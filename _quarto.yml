@@ -3,14 +3,15 @@ project:
   output-dir: docs
 
 website:
-  title: "PDAWG"
+  title: "Political Document Analysis Working Group (P-DAWG)"
   navbar:
     right:
+      - index.qmd
+      - literature.qmd
+      - resources.qmd
       - about.qmd
       - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+        href: https://github.com/uwpolgrads/PDAWG
 format:
   html:
     theme: cosmo
