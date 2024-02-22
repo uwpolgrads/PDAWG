@@ -7,7 +7,7 @@ title-block-banner: true
 | Date       | Presenter   | Proposed topic  |
 |------------|-------------|-----------------|
 | 02/21/2024 | Brian Leung | Getting started |
-| ...        | ...         | ...             |
+| 02/28/2024 | Second presenter | ...             |
 | ...        | ...         | ...             |
 | ...        | ...         | ...             |
 | ...        | ...         | ...             |
