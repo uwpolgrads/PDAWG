@@ -4,11 +4,5 @@
     "items": [
       "/posts/1.gettingStarted/gettingStarted.html"
     ]
-  },
-  {
-    "listing": "/blog.html",
-    "items": [
-      "/posts/1.gettingStarted/basicTextAnalysis.html"
-    ]
   }
 ]
