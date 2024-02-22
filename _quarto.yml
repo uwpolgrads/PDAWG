@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "Political Document Analysis Working Group (P-DAWG)"
+  title: "<b>Political Document Analysis Working Group (P-DAWG)</b><br><em><small><small>Department of Political Science, UW</small></small></em>"
   navbar:
     right:
       - index.qmd
