@@ -1,0 +1,56 @@
+---
+title: "Give it a nice title"
+author: "Brian Leung"
+date: "2024-02-23"
+categories: [code, Python, hugging face, text classification] 
+message: false 
+warning: false
+---
+
+```{r}
+library(reticulate)
+
+virtualenv_create("r-reticulate")
+
+packages <- c("transformers", "tensorflow", "torch", "torchvision", "torchaudio")
+
+virtualenv_install("r-reticulate", packages)
+```
+
+```{r}
+py_config()
+```
+
+```{python}
+from transformers import pipeline
+import os
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+```
+
+```{python}
+# import torch
+# if torch.backends.mps.is_available():
+#     mps_device = torch.device("mps")
+#     x = torch.ones(1, device=mps_device)
+#     print (x)
+# else:
+#     print ("MPS device not found.")
+
+```
+
+```{python}
+text = "Angela Merkel is a politician in Germany and leader of the CDU"
+hypothesis_template = "This example is about {}"
+classes_verbalized = ["politics", "economy", "entertainment", "environment"]
+zeroshot_classifier = pipeline("zero-shot-classification")
+output = zeroshot_classifier(text, classes_verbalized, hypothesis_template=hypothesis_template, multi_label=False)
+print(output)
+```
+
+```{r}
+library(tidyverse)
+output <- py$output
+output %>%
+  bind_rows() %>%
+  pivot_wider(id_cols = sequence, names_from = labels, values_from = scores)
+```

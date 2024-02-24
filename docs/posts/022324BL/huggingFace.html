@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brian Leung">
-<meta name="dcterms.date" content="2024-02-21">
+<meta name="dcterms.date" content="2024-02-23">
 
-<title>Political Document Analysis Working Group (P-DAWG)Department of Political Science, UW - How to write a blog post with R or Python code?</title>
+<title>Political Document Analysis Working Group (P-DAWG)Department of Political Science, UW - Give it a nice title</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -153,12 +153,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">How to write a blog post with R or Python code?</h1>
+      <h1 class="title">Give it a nice title</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">news</div>
                 <div class="quarto-category">code</div>
-                <div class="quarto-category">R</div>
                 <div class="quarto-category">Python</div>
+                <div class="quarto-category">hugging face</div>
+                <div class="quarto-category">text classification</div>
               </div>
                   </div>
   </div>
@@ -176,7 +176,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">February 21, 2024</p>
+        <p class="date">February 23, 2024</p>
       </div>
     </div>
     
@@ -194,111 +194,77 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>Welcome to P-DAWG! This post introduces us to using Quarto (<code>.qmd</code>) to write a blog-style document that integrates <code>R</code> or <code>Python</code> code with text!</p>
-<section id="quarto-.qmd-is-just-like-rmarkdown-.rmd" class="level2">
-<h2 class="anchored" data-anchor-id="quarto-.qmd-is-just-like-rmarkdown-.rmd">Quarto (<code>.qmd</code>) is just like RMarkdown (<code>.rmd</code>)!</h2>
-<p>You can open a new Quarto Document (<code>.qmd</code>) in Rstudio and choose <code>HTML</code> as the format. This works just like a traditional RMarkdown file (<code>.rmd</code>).</p>
-<p>You can copy and paste the following code to the preamble (i.e., top of the document) and fill out the details:</p>
-<pre><code>---
-title: "Give it a nice title"
-author: "Your good name"
-date: "today is?"
-categories: [tag1, tag2, tag3...] 
-message: false 
-warning: false
----</code></pre>
-</section>
-<section id="working-with-r-code" class="level2">
-<h2 class="anchored" data-anchor-id="working-with-r-code">Working with <code>R</code> code</h2>
-<p>Inside the <code>.qmd</code> document, you can type text anywhere you like. To insert a code chunk, type “/” to select options from a drop-down menu (if you are using Visual editor mode). For example, I can insert the following <code>R</code> code chunk:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Then you can perform data analysis as usual:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 5
-  Species    Sepal.Length Sepal.Width Petal.Length Petal.Width
-  &lt;fct&gt;             &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
-1 setosa             5.01        3.43         1.46       0.246
-2 versicolor         5.94        2.77         4.26       1.33 
-3 virginica          6.59        2.97         5.55       2.03 </code></pre>
-</div>
-</div>
-<p>Visualization is also easy:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="GettingStarted_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</section>
-<section id="working-with-python-code" class="level2">
-<h2 class="anchored" data-anchor-id="working-with-python-code">Working with <code>Python</code> code</h2>
-<p>Quarto document has the advantage of being able to run <code>Python</code> code at the same time. But this does requiries some knowledge about the language, and especially how virtual environment works for managing packages.</p>
-<p>To do that from a <code>RStudio</code> environment, you have to first install <code>reticulate</code> package in <code>R</code> by running <code>install.packages("reticulate")</code>.</p>
-<p>After loading <code>reticulate</code>, you can create a virtual environment and install the required <code>Python</code> packages:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new environment </span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">virtualenv_create</span>(<span class="st">"r-reticulate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">virtualenv_create</span>(<span class="st">"r-reticulate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>virtualenv: r-reticulate</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># packages to install </span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"numpy"</span>, <span class="st">"pandas"</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># install packages to the environment</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">virtualenv_install</span>(<span class="st">"r-reticulate"</span>, packages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"transformers"</span>, <span class="st">"tensorflow"</span>, <span class="st">"torch"</span>, <span class="st">"torchvision"</span>, <span class="st">"torchaudio"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">virtualenv_install</span>(<span class="st">"r-reticulate"</span>, packages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Using virtual environment 'r-reticulate' ...</code></pre>
 </div>
 </div>
-<p>You might have to go to <code>Options &gt; Python &gt; Virtual Environment</code>, and then select the correct <code>Python</code> interpreter.</p>
-<p>Now, you can run <code>Python</code> code! One advantage of doing it in the Quarto document (with <code>reticulate</code> package) is that you can reference and transport <code>R</code> object directly into the <code>Python</code> environment by calling <code>r.object_name:</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> r.iris <span class="co"># transport R object into Python</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>iris_groupMean <span class="op">=</span> iris.groupby([<span class="st">'Species'</span>]).mean()</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>iris_groupMean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_config</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>            Sepal.Length  Sepal.Width  Petal.Length  Petal.Width
-Species                                                         
-setosa             5.006        3.428         1.462        0.246
-versicolor         5.936        2.770         4.260        1.326
-virginica          6.588        2.974         5.552        2.026</code></pre>
+<pre><code>python:         /Users/brianleung/.virtualenvs/r-reticulate/bin/python
+libpython:      /Users/brianleung/.pyenv/versions/3.9.16/lib/libpython3.9.dylib
+pythonhome:     /Users/brianleung/.virtualenvs/r-reticulate:/Users/brianleung/.virtualenvs/r-reticulate
+version:        3.9.16 (main, Mar 20 2023, 20:22:25)  [Clang 14.0.0 (clang-1400.0.29.202)]
+numpy:          /Users/brianleung/.virtualenvs/r-reticulate/lib/python3.9/site-packages/numpy
+numpy_version:  1.26.4
+
+NOTE: Python version was forced by VIRTUAL_ENV</code></pre>
 </div>
 </div>
-<p>You can do the reverse by accessing <code>Python</code> object in the <code>R</code> environment by calling <code>py$object_name</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(py<span class="sc">$</span>iris_groupMean) <span class="co"># back to R code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> pipeline</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>os.environ[<span class="st">"TOKENIZERS_PARALLELISM"</span>] <span class="op">=</span> <span class="st">"false"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import torch</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># if torch.backends.mps.is_available():</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#     mps_device = torch.device("mps")</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#     x = torch.ones(1, device=mps_device)</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#     print (x)</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># else:</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#     print ("MPS device not found.")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"Angela Merkel is a politician in Germany and leader of the CDU"</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>hypothesis_template <span class="op">=</span> <span class="st">"This example is about </span><span class="sc">{}</span><span class="st">"</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>classes_verbalized <span class="op">=</span> [<span class="st">"politics"</span>, <span class="st">"economy"</span>, <span class="st">"entertainment"</span>, <span class="st">"environment"</span>]</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>zeroshot_classifier <span class="op">=</span> pipeline(<span class="st">"zero-shot-classification"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 3
-Columns: 4
-$ Sepal.Length &lt;dbl&gt; 5.006, 5.936, 6.588
-$ Sepal.Width  &lt;dbl&gt; 3.428, 2.770, 2.974
-$ Petal.Length &lt;dbl&gt; 1.462, 4.260, 5.552
-$ Petal.Width  &lt;dbl&gt; 0.246, 1.326, 2.026</code></pre>
+<pre><code>No model was supplied, defaulted to facebook/bart-large-mnli and revision c626438 (https://huggingface.co/facebook/bart-large-mnli).
+Using a pipeline without specifying a model name and revision in production is not recommended.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> zeroshot_classifier(text, classes_verbalized, hypothesis_template<span class="op">=</span>hypothesis_template, multi_label<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(output)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'sequence': 'Angela Merkel is a politician in Germany and leader of the CDU', 'labels': ['politics', 'environment', 'economy', 'entertainment'], 'scores': [0.8386107087135315, 0.06258320808410645, 0.0585179440677166, 0.040288202464580536]}</code></pre>
 </div>
 </div>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Quarto document <code>.qmd</code> gives us an easy way to write a blog post that seamlessly integrates narrative text with code. As long as you submit a <em>minimally reproducible</em> Quarto document (that you can <strong>Render</strong> your document successfully), your post can be published in no time.</p>
-<p>Furthermore, the <code>reticulate</code> package enables interoperability between <code>R</code> and <code>Python</code> code in the same document. Many state-of-the-art models and packages in NLP are written in <code>Python</code>. Hopefully, this will encourage <code>R</code> users to take advantage of <code>Python</code> packages in a familiar environment.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> py<span class="sc">$</span>output</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>output <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> sequence, <span class="at">names_from =</span> labels, <span class="at">values_from =</span> scores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 5
+  sequence                            politics environment economy entertainment
+  &lt;chr&gt;                                  &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;         &lt;dbl&gt;
+1 Angela Merkel is a politician in G…    0.839      0.0626  0.0585        0.0403</code></pre>
+</div>
+</div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

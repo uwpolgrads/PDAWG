@@ -7,7 +7,7 @@ message: false
 warning: false
 ---
 
-Welcome to P-DAWG! This post introduces us to how to use Quarto (`.qmd`) to write a blog-style document that integrates `R` or `Python` code with text!
+Welcome to P-DAWG! This post introduces us to using Quarto (`.qmd`) to write a blog-style document that integrates `R` or `Python` code with text!
 
 ## Quarto (`.qmd`) is just like RMarkdown (`.rmd`)!
 
@@ -19,7 +19,7 @@ You can copy and paste the following code to the preamble (i.e., top of the docu
 ---
 title: "Give it a nice title"
 author: "Your good name"
-date: "today is..."
+date: "today is?"
 categories: [tag1, tag2, tag3...] 
 message: false 
 warning: false
@@ -28,7 +28,7 @@ warning: false
 
 ## Working with `R` code
 
-Inside the `.qmd` document, you can type text anywhere you like. To insert a code, type "/" to select options from a drop-down menu (if you are using Visual editor mode). For example, I can insert the following `R` code chunk:
+Inside the `.qmd` document, you can type text anywhere you like. To insert a code chunk, type "/" to select options from a drop-down menu (if you are using Visual editor mode). For example, I can insert the following `R` code chunk:
 
 ```{r}
 library(tidyverse)
@@ -54,11 +54,11 @@ ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
 
 ## Working with `Python` code
 
-Quarto document has the advantage of being able to run `Python` code at the same time. But this does requies some knowledge about the language, and especially how virtual environment works for managing packages.
+Quarto document has the advantage of being able to run `Python` code at the same time. But this does requiries some knowledge about the language, and especially how virtual environment works for managing packages.
 
-To do that from a `RStudio` environment, you have to first install `reticulate` package in R by running `install.packages("reticulate").`
+To do that from a `RStudio` environment, you have to first install `reticulate` package in `R` by running `install.packages("reticulate")`.
 
-After loading `reticulate`, you can create a virtual environment and install the required `Python` packages/modules:
+After loading `reticulate`, you can create a virtual environment and install the required `Python` packages:
 
 ```{r}
 library(reticulate)
@@ -73,21 +73,21 @@ packages <- c("numpy", "pandas")
 virtualenv_install("r-reticulate", packages)
 ```
 
-You might have to go to `Options > Python > Virtual Environment`, and then select the correct interpreter.
+You might have to go to `Options > Python > Virtual Environment`, and then select the correct `Python` interpreter.
 
 Now, you can run `Python` code! One advantage of doing it in the Quarto document (with `reticulate` package) is that you can reference and transport `R` object directly into the `Python` environment by calling `r.object_name:`
 
 ```{python}
-import numpy as np
+import numpy as np 
 import pandas as pd
 
-iris = r.iris
+iris = r.iris # transport R object into Python
 iris_groupMean = iris.groupby(['Species']).mean()
 iris_groupMean
 
 ```
 
-You can do the reverse by referencing the `Python` object in the `R` environment by calling `py$object_name`:
+You can do the reverse by accessing `Python` object in the `R` environment by calling `py$object_name`:
 
 ```{r}
 glimpse(py$iris_groupMean) # back to R code
@@ -95,6 +95,6 @@ glimpse(py$iris_groupMean) # back to R code
 
 ## Conclusion
 
-Quarto document `.qmd` gives us an easy way to write a blog post that seamlessly integrate text narration with code. As you as you submit a *minimally reproducible* Quarto document (that you can **Render** your document successfully), your post can be published in no time.
+Quarto document `.qmd` gives us an easy way to write a blog post that seamlessly integrates narrative text with code. As long as you submit a *minimally reproducible* Quarto document (that you can **Render** your document successfully), your post can be published in no time.
 
-Furthermore, the `reticulate` package creates a nice interface that accommodates both `R` and `Python` code in the same document. Many state-of-the-art models and packages in NLP are written in `Python`. Hopefully, this will encourage `R` users to take advantage of `Python` modules in a familiar environment.
+Furthermore, the `reticulate` package enables interoperability between `R` and `Python` code in the same document. Many state-of-the-art models and packages in NLP are written in `Python`. Hopefully, this will encourage `R` users to take advantage of `Python` packages in a familiar environment.
