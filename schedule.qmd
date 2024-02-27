@@ -10,3 +10,21 @@ page-layout: full
 | ...        | ...              | ...             |
 | ...        | ...              | ...             |
 | ...        | ...              | ...             |
+
+
+
+########################################
+########### Potential topics ###########
+########################################
+
+################ String ################
+## Regex and string manipulation
+## Disambiguating names: from fuzzy matching to beyond
+
+################ NLP ###################
+
+################ ML ####################
+## Basic ML 
+
+################ Computation ###########
+## Handling "big data" and accelerating your code: vroom, DT, parallel computing, functional programming, GPUs, etc
