@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>&lt;b&gt;Political Document Analysis Working Group (P-DAWG)&lt;/b&gt;&lt;br&gt;&lt;em&gt;&lt;small&gt;&lt;small&gt;Department of Political Science, UW&lt;/small&gt;&lt;/small&gt;&lt;/em&gt;</title>
+<link>https://uwpolgrads.github.io/PDAWG/index.html</link>
+<atom:link href="https://uwpolgrads.github.io/PDAWG/index.xml" rel="self" type="application/rss+xml"/>
+<description>A blog by Political Document Analysis Working Group (P-DAWG)</description>
+<generator>quarto-1.3.450</generator>
+<lastBuildDate>Fri, 23 Feb 2024 08:00:00 GMT</lastBuildDate>
+<item>
+  <title>Zero-shot classification with Hugging Face</title>
+  <dc:creator>Brian Leung</dc:creator>
+  <link>https://uwpolgrads.github.io/PDAWG/posts/022324BL/huggingFace.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://uwpolgrads.github.io/PDAWG/posts/022324BL/hf-logo-with-title.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<section id="why-hugging-face" class="level2">
+<h2 class="anchored" data-anchor-id="why-hugging-face">Why Hugging Face?</h2>
+<p>Advances in natural language processing (NLP), particularly with the advent of of large language models (LLMs), have created exciting opportunities for social science researchers to deal with a large amount of text as data. But numerous barriers to entry existed: the knowledge, data, and computational resources required to train and fine-tune the models to specific tasks can be very daunting for us.</p>
+<p>So, there is a <em>gap</em> between what NLP models or resources are available out there and what we as social scientists can reasonably digest and incorporate into our workflow. Researchers with a technical comparative advantage in training and fine-tuning models have already produced resources that have immense potentials for social science applications.</p>
+<p>For example, <a href="https://aclanthology.org/2022.lrec-1.801/">PoliBERTweet</a> is a pre-trained BERT model – a transformer-based model, much like its cousin GPT (“Generative Pre-trained <em>Transformer</em>”). It is pre-trained in the sense that it was trained on 83 million politics-related Tweets, making it suitable for a wide range of downstream, domain-specific tasks related to politics. But the problem is, how we as social scientists can take advantage of such readily available resources?</p>
+<p>There is where <a href="https://huggingface.co/">Hugging Face</a> comes into play. Much like Github, it is a community platform that allows practitioners and researchers to host and collaborate on AI models. Many state-of-the-art NLP models are available for specific downstream tasks, like text classification (e.g., for sentiment analysis or topic classification) or embedding documents to compare their similarity.</p>
+<p>Most importantly, it comes with a <code>Python</code> package – <code>transformers</code> – that makes downloading and implementing those pre-trained models super easy and dramatically lowers the entry cost. But it does require some knowledge in <code>Python</code>.</p>
+</section>
+<section id="how-to-get-started-as-a-r-user" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-get-started-as-a-r-user">How to get started as a R user?</h2>
+<p>In this post, I want to develop a workflow that centers on a <code>R</code> environment (e.g., writing a <code>.rmd</code>/<code>.qmd</code>, or wrangling data with <code>tidyverse</code>) that feels familiar to us, but one that incorporates the power of <code>Python</code> packages like <code>transformers</code> <em>only when we need to</em>.</p>
+<p>I can’t tell you how much the fear and discomfort from an interrupted workflow – switching from one language to a less-familiar one, and transporting objects between different interfaces – have discouraged people (myself included) from taking advantage of <code>Python</code>.</p>
+<p>Hopefully, an integrated workflow that makes <code>R</code> and <code>Python</code> interoperable will remove the last barrier to entry to unleash the power of NLP in our research.</p>
+</section>
+<section id="setting-up-python-in-r-with-reticulate" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up-python-in-r-with-reticulate">Setting up Python in R with <code>reticulate</code></h2>
+<p>First, let’s set up a virtual environment to install the required <code>Python</code> packages – particularly <code>transformers</code> via the <code>reticulate</code> package in <code>R</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(reticulate)</span>
+<span id="cb1-2"></span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">virtualenv_create</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"r-reticulate"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>virtualenv: r-reticulate</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">packages <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"transformers"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"tensorflow"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"torch"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"torchvision"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"torchaudio"</span>)</span>
+<span id="cb3-2"></span>
+<span id="cb3-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">virtualenv_install</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"r-reticulate"</span>, packages)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Using virtual environment 'r-reticulate' ...</code></pre>
+</div>
+</div>
+<p>If it is the first time for you to install the packages, it might take some time as they are quite large in size.</p>
+</section>
+<section id="basic-text-classification-with-transformers" class="level2">
+<h2 class="anchored" data-anchor-id="basic-text-classification-with-transformers">Basic text classification with <code>transformers</code></h2>
+<p>To see if you have installed the packages and selected the correct <code>Python</code> interpreter, run the following code to import <code>pipeline</code>, the key function from <code>transformers</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> transformers <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> pipeline</span></code></pre></div>
+</div>
+<p>Now, we can take advantage of pre-trained models on Hugging Face and perform text analyses. It can be done in <em>a few lines of code</em>. But you must first define the <em>language task</em> you want to perform and select the corresponding <em>model.</em> For example, I can perform sentiment analysis on a text by running:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">classifier <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pipeline(task <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"sentiment-analysis"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>No model was supplied, defaulted to distilbert/distilbert-base-uncased-finetuned-sst-2-english and revision af0f99b (https://huggingface.co/distilbert/distilbert-base-uncased-finetuned-sst-2-english).
+Using a pipeline without specifying a model name and revision in production is not recommended.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">text <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"This blog post is not unhelpful"</span></span>
+<span id="cb8-2">output <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> classifier(text)</span>
+<span id="cb8-3"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(output)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[{'label': 'POSITIVE', 'score': 0.7062975168228149}]</code></pre>
+</div>
+</div>
+<p>The sentiment classifier assigns a positive label to my double-negative sentence, which is reasonable. More generically, in <code>pipeline(...)</code>, you have to declare the task (e.g., “sentiment-analysis”) and the model. The default model “distilbert/distilbert-base-uncased-finetuned-sst-2-english” is chosen because the user doesn’t specify one, which is not a recommended practice. You can go to <a href="https://huggingface.co/models">Hugging Face</a> to look for specific models for your particular NLP tasks. Be aware that NLP models tend to be quite large in size (some gigabytes), so it can take a while for your first time installation.</p>
+</section>
+<section id="classifying-political-stances-with-transformers" class="level2">
+<h2 class="anchored" data-anchor-id="classifying-political-stances-with-transformers">Classifying political stances with <code>transformers</code></h2>
+<p>The following section showcases a DeBERTa-based model trained for stance detection, first by <a href="https://huggingface.co/MoritzLaurer/deberta-v3-large-zeroshot-v1.1-all-33">Laurer et al</a> and further improved on by <a href="https://huggingface.co/mlburnham/deberta-v3-large-polistance-affect-v1.0">Michael Burnham</a>. Behind the model, there is an interesting literature called natural language inference (NLI) or textual entailment. This is suitable for detecting political or issue stances behind some text in a zero-shot setting (i.e., the model can make prediction on arbitrary labels it wasn’t trained on but we care about).</p>
+<p>To perform political stance detection:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1">zeroshot_classifier <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pipeline(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"zero-shot-classification"</span>, model <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mlburnham/deberta-v3-large-polistance-affect-v1.0"</span>)</span>
+<span id="cb10-2">text <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Many American jobs are shipped to Chinese factories."</span></span>
+<span id="cb10-3">hypothesis_template <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"This text supports trading </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> with China"</span></span>
+<span id="cb10-4">classes_verbalized <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"more"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"less"</span>]</span>
+<span id="cb10-5">output <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> zeroshot_classifier(text, classes_verbalized, hypothesis_template<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>hypothesis_template, multi_label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>)</span>
+<span id="cb10-6"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(output)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'sequence': 'Many American jobs are shipped to Chinese factories.', 'labels': ['less', 'more'], 'scores': [0.9999904632568359, 9.514573321212083e-06]}</code></pre>
+</div>
+</div>
+<p>The classifier looks at the text and perform hypothesis testings: does the text (based on “common” understanding of the language) <em>entail</em> one hypothesis (e.g., it supports trading more with China) or the other (e.g., trading less with China)? It assigns probabilities to each hypothesis and the label with the highest probability is chosen (multiple labels are allowed as an option though). For example, the classifier correctly identify the text (“Many American jobs are shipped to Chinese factories.”) as a statement that supports trading less with China.</p>
+</section>
+<section id="bonus" class="level2">
+<h2 class="anchored" data-anchor-id="bonus">Bonus</h2>
+<p>To transport the result back to <code>R</code> for wrangling:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb12-2">output <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> py<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>output</span>
+<span id="cb12-3">output <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb12-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">bind_rows</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb12-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_wider</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">id_cols =</span> sequence, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_from =</span> labels, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_from =</span> scores)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  sequence                                              less       more
+  &lt;chr&gt;                                                &lt;dbl&gt;      &lt;dbl&gt;
+1 Many American jobs are shipped to Chinese factories.  1.00 0.00000951</code></pre>
+</div>
+</div>
+<p>To deal with a warning:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> os</span>
+<span id="cb14-2">os.environ[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"TOKENIZERS_PARALLELISM"</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"false"</span></span></code></pre></div>
+</div>
+<p>To enable GPU:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># import torch</span></span>
+<span id="cb15-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># if torch.backends.mps.is_available():</span></span>
+<span id="cb15-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#     mps_device = torch.device("mps")</span></span>
+<span id="cb15-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#     x = torch.ones(1, device=mps_device)</span></span>
+<span id="cb15-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#     print (x)</span></span>
+<span id="cb15-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># else:</span></span>
+<span id="cb15-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#     print ("MPS device not found.")</span></span></code></pre></div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>code</category>
+  <category>R</category>
+  <category>Python</category>
+  <category>hugging face</category>
+  <category>text classification</category>
+  <guid>https://uwpolgrads.github.io/PDAWG/posts/022324BL/huggingFace.html</guid>
+  <pubDate>Fri, 23 Feb 2024 08:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>How to write a blog post with R or Python code?</title>
+  <dc:creator>Brian Leung</dc:creator>
+  <link>https://uwpolgrads.github.io/PDAWG/posts/022224BL/GettingStarted.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Welcome to P-DAWG! This post introduces us to using Quarto (<code>.qmd</code>) to write a blog-style document that integrates <code>R</code> or <code>Python</code> code with text!</p>
+<section id="quarto-.qmd-is-just-like-rmarkdown-.rmd" class="level2">
+<h2 class="anchored" data-anchor-id="quarto-.qmd-is-just-like-rmarkdown-.rmd">Quarto (<code>.qmd</code>) is just like RMarkdown (<code>.rmd</code>)!</h2>
+<p>You can open a new Quarto Document (<code>.qmd</code>) in Rstudio and choose <code>HTML</code> as the format. This works just like a traditional RMarkdown file (<code>.rmd</code>).</p>
+<p>You can copy and paste the following code to the preamble (i.e., top of the document) and fill out the details:</p>
+<pre><code>---
+title: "Give it a nice title"
+author: "Your good name"
+date: "today is?"
+categories: [tag1, tag2, tag3...] 
+message: false 
+warning: false
+---</code></pre>
+</section>
+<section id="working-with-r-code" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-r-code">Working with <code>R</code> code</h2>
+<p>Inside the <code>.qmd</code> document, you can type text anywhere you like. To insert a code chunk, type “/” to select options from a drop-down menu (if you are using Visual editor mode). For example, I can insert the following <code>R</code> code chunk:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span></code></pre></div>
+</div>
+<p>Then you can perform data analysis as usual:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data</span>(iris)</span>
+<span id="cb3-2"></span>
+<span id="cb3-3">iris <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb3-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(Species) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb3-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarize</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">across</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">where</span>(is.numeric), mean))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 5
+  Species    Sepal.Length Sepal.Width Petal.Length Petal.Width
+  &lt;fct&gt;             &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+1 setosa             5.01        3.43         1.46       0.246
+2 versicolor         5.94        2.77         4.26       1.33 
+3 virginica          6.59        2.97         5.55       2.03 </code></pre>
+</div>
+</div>
+<p>Visualization is also easy:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(iris, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> Sepal.Length, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> Petal.Length, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> Species)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://uwpolgrads.github.io/PDAWG/posts/022224BL/GettingStarted_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="working-with-python-code" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-python-code">Working with <code>Python</code> code</h2>
+<p>Quarto document has the advantage of being able to run <code>Python</code> code at the same time. But this does requiries some knowledge about the language, and especially how virtual environment works for managing packages.</p>
+<p>To do that from a <code>RStudio</code> environment, you have to first install <code>reticulate</code> package in <code>R</code> by running <code>install.packages("reticulate")</code>.</p>
+<p>After loading <code>reticulate</code>, you can create a virtual environment and install the required <code>Python</code> packages:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(reticulate)</span>
+<span id="cb6-2"></span>
+<span id="cb6-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># create a new environment </span></span>
+<span id="cb6-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">virtualenv_create</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"r-reticulate"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>virtualenv: r-reticulate</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># packages to install </span></span>
+<span id="cb8-2">packages <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"numpy"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"pandas"</span>)</span>
+<span id="cb8-3"></span>
+<span id="cb8-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># install packages to the environment</span></span>
+<span id="cb8-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">virtualenv_install</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"r-reticulate"</span>, packages)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Using virtual environment 'r-reticulate' ...</code></pre>
+</div>
+</div>
+<p>You might have to go to <code>Options &gt; Python &gt; Virtual Environment</code>, and then select the correct <code>Python</code> interpreter.</p>
+<p>Now, you can run <code>Python</code> code! One advantage of doing it in the Quarto document (with <code>reticulate</code> package) is that you can reference and transport <code>R</code> object directly into the <code>Python</code> environment by calling <code>r.object_name:</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> np </span>
+<span id="cb10-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> pandas <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> pd</span>
+<span id="cb10-3"></span>
+<span id="cb10-4">iris <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> r.iris <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># transport R object into Python</span></span>
+<span id="cb10-5">iris_groupMean <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> iris.groupby([<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Species'</span>]).mean()</span>
+<span id="cb10-6">iris_groupMean</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Sepal.Length  Sepal.Width  Petal.Length  Petal.Width
+Species                                                         
+setosa             5.006        3.428         1.462        0.246
+versicolor         5.936        2.770         4.260        1.326
+virginica          6.588        2.974         5.552        2.026</code></pre>
+</div>
+</div>
+<p>You can do the reverse by accessing <code>Python</code> object in the <code>R</code> environment by calling <code>py$object_name</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(py<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>iris_groupMean) <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># back to R code</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 3
+Columns: 4
+$ Sepal.Length &lt;dbl&gt; 5.006, 5.936, 6.588
+$ Sepal.Width  &lt;dbl&gt; 3.428, 2.770, 2.974
+$ Petal.Length &lt;dbl&gt; 1.462, 4.260, 5.552
+$ Petal.Width  &lt;dbl&gt; 0.246, 1.326, 2.026</code></pre>
+</div>
+</div>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Quarto document <code>.qmd</code> gives us an easy way to write a blog post that seamlessly integrates narrative text with code. As long as you submit a <em>minimally reproducible</em> Quarto document (that you can <strong>Render</strong> your document successfully), your post can be published in no time.</p>
+<p>Furthermore, the <code>reticulate</code> package enables interoperability between <code>R</code> and <code>Python</code> code in the same document. Many state-of-the-art models and packages in NLP are written in <code>Python</code>. Hopefully, this will encourage <code>R</code> users to take advantage of <code>Python</code> packages in a familiar environment.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>R</category>
+  <category>Python</category>
+  <guid>https://uwpolgrads.github.io/PDAWG/posts/022224BL/GettingStarted.html</guid>
+  <pubDate>Wed, 21 Feb 2024 08:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>

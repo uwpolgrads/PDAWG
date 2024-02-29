@@ -4,6 +4,8 @@ project:
 
 website:
   title: "<b>Political Document Analysis Working Group (P-DAWG)</b><br><em><small><small>Department of Political Science, UW</small></small></em>"
+  site-url: https://uwpolgrads.github.io/PDAWG/
+  description: "A blog by Political Document Analysis Working Group (P-DAWG)"
   navbar:
     right:
       - index.qmd
