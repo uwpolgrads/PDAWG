@@ -2,3 +2,25 @@
 title: "Literature"
 page-layout: full
 ---
+
+*Note: This page is a hub for academic papers that utilize NLP or related techniques with a strong social science focus. Please cite them in Chicago format.*
+
+## Word embedding
+
+*Methodology*
+
+-   RODRIGUEZ, PEDRO L., ARTHUR SPIRLING, and BRANDON M. STEWART. “Embedding Regression: Models for Context-Specific Description and Inference.” *American Political Science Review* 117, no. 4 (2023): 1255–74. [Link](https://doi.org/10.1017/S0003055422001228)
+
+*Application*
+
+-   ...
+
+## Text classification
+
+*Methodology*
+
+-   Laurer, Moritz, Wouter van Atteveldt, Andreu Casas, and Kasper Welbers. “Less Annotating, More Classifying: Addressing the Data Scarcity Issue of Supervised Machine Learning with Deep Transfer Learning and BERT-NLI.” *Political Analysis* 32, no. 1 (2024): 84–100. [Link](https://doi.org/10.1017/pan.2023.20)
+
+*Application*
+
+-   ...

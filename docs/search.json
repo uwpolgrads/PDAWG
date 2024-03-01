@@ -1,5 +1,47 @@
 [
   {
+    "objectID": "literature.html",
+    "href": "literature.html",
+    "title": "Literature",
+    "section": "",
+    "text": "Note: This page is a hub for academic papers that utilize NLP or related techniques with a strong social science focus. Please cite them in Chicago format."
+  },
+  {
+    "objectID": "literature.html#word-embedding",
+    "href": "literature.html#word-embedding",
+    "title": "Literature",
+    "section": "Word embedding",
+    "text": "Word embedding\nMethodology\n\nRODRIGUEZ, PEDRO L., ARTHUR SPIRLING, and BRANDON M. STEWART. “Embedding Regression: Models for Context-Specific Description and Inference.” American Political Science Review 117, no. 4 (2023): 1255–74. Link\n\nApplication\n\n…"
+  },
+  {
+    "objectID": "literature.html#text-classification",
+    "href": "literature.html#text-classification",
+    "title": "Literature",
+    "section": "Text classification",
+    "text": "Text classification\nMethodology\n\nLaurer, Moritz, Wouter van Atteveldt, Andreu Casas, and Kasper Welbers. “Less Annotating, More Classifying: Addressing the Data Scarcity Issue of Supervised Machine Learning with Deep Transfer Learning and BERT-NLI.” Political Analysis 32, no. 1 (2024): 84–100. Link\n\nApplication\n\n…"
+  },
+  {
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "Resources",
+    "section": "",
+    "text": "“Hands-on Transformers: Fine-Tune your own BERT and GPT.” Data Science Summer School 2023 by Moritz Laurer, with Code and Video."
+  },
+  {
+    "objectID": "resources.html#online-course",
+    "href": "resources.html#online-course",
+    "title": "Resources",
+    "section": "",
+    "text": "“Hands-on Transformers: Fine-Tune your own BERT and GPT.” Data Science Summer School 2023 by Moritz Laurer, with Code and Video."
+  },
+  {
+    "objectID": "resources.html#cheat-sheet",
+    "href": "resources.html#cheat-sheet",
+    "title": "Resources",
+    "section": "Cheat sheet",
+    "text": "Cheat sheet\n\nString manipulation with stringr"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Blog",
