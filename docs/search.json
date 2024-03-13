@@ -137,6 +137,6 @@
     "href": "schedule.html",
     "title": "Schedule",
     "section": "",
-    "text": "Date\nPresenter\nProposed topic\n\n\n\n\n02/21/2024\nBrian Leung\nGetting started\n\n\n02/28/2024\nSecond presenter\n…\n\n\n…\n…\n…\n\n\n…\n…\n…\n\n\n…\n…\n…"
+    "text": "Date\nPresenter\nProposed topic\n\n\n\n\nApril 4 / Week 2\nBrian Leung\nWelcoming / Code showcase: Zero-shot classification with Hugging Face & Transformers\n\n\nApril 18 / Week 4\nJihyeon Bae\nWork in progress / Code showcase: Limitations of BERT and Promises of Topic Modeling with UN General Debate dataset\n\n\nMay 2 / Week 6\nZhaowen Guo\nCode showcase: Fine-tuning pre-trained language models using PyTorch\n\n\nMay 16 / Week 8\nTao Lin\nCode showcase: “Relatio: Text Semantics Capture Political and Economic Narratives” by Ash et al. (2024)\n\n\nMay 30 / Week 10\nTBD\nTBD"
   }
 ]
