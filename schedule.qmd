@@ -3,10 +3,12 @@ title: "Schedule"
 page-layout: full
 ---
 
-|              Date | Presenter   | Proposed topic                                                                                                      |
+We meet every two weeks in Smith 40A from 3:00 to 4:00 pm Pacific Time. The format is hybrid (Zoom link here; only invited users are allowed). Please consult the schedule below for the details of presentations:
+
+|              Date | Presenter       | Proposed topic                                                                           |
 |------------------:|----------------------------|--------------------------|
-|  April 4 / Week 2 | Brian Leung | Welcoming / Code showcase: Zero-shot classification with Hugging Face & Transformers                                |
-| April 18 / Week 4 | Jihyeon Bae | Work in progress / Code showcase: Limitations of BERT and Promises of Topic Modeling with UN General Debate dataset |
-|    May 2 / Week 6 | Zhaowen Guo | Code showcase: Fine-tuning pre-trained language models using PyTorch                                                |
-|   May 16 / Week 8 | Tao Lin     | Code showcase: “Relatio: Text Semantics Capture Political and Economic Narratives” by Ash et al. (2024)             |
-|  May 30 / Week 10 | TBD         | TBD                                                                                                                 |
+|  April 4 / Week 2 | Brian Leung     | Welcoming / Zero-shot classification with Hugging Face & Transformers                    |
+| April 18 / Week 4 | Tao Lin         | “Relatio: Text Semantics Capture Political and Economic Narratives” by Ash et al. (2024) |
+|    May 2 / Week 6 | Jihyeon Bae     | Limitations of BERT and Promises of Topic Modeling with UN General Debate Data           |
+|   May 16 / Week 8 | Zhaowen Guo     | Fine-tuning Pre-trained Language Models Using PyTorch                                    |
+|  May 30 / Week 10 | Nela Mrchkovska | Fine-tuning Topic Classification Models with Sermons Data                                |
