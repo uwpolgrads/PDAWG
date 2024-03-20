@@ -1407,9 +1407,9 @@ font-style: inherit;">print</span>(top_terms)</span></code></pre></div>
 
  ]]></description>
   <category>R</category>
-  <category>Singular Vector Decomposition</category>
   <category>Machine Learning</category>
-  <category>Principal Component Analysis</category>
+  <category>SVD</category>
+  <category>PCA</category>
   <category>Topic Modeling</category>
   <guid>https://uwpolgrads.github.io/PDAWG/posts/032024ZG/svd.html</guid>
   <pubDate>Wed, 20 Mar 2024 07:00:00 GMT</pubDate>
@@ -1660,7 +1660,8 @@ font-style: inherit;">#     print ("MPS device not found.")</span></span></code>
   <category>Python</category>
   <category>Hugging Face</category>
   <category>Transformers</category>
-  <category>Text Classification</category>
+  <category>Zero-shot Classification</category>
+  <category>Topic Modeling</category>
   <guid>https://uwpolgrads.github.io/PDAWG/posts/022324BL/huggingFace.html</guid>
   <pubDate>Fri, 23 Feb 2024 08:00:00 GMT</pubDate>
 </item>
