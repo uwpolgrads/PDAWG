@@ -2,7 +2,7 @@
 title: "Zero-shot classification with Hugging Face"
 author: "Brian Leung"
 date: "2024-02-23"
-categories: [code, R, Python, hugging face, text classification] 
+categories: [code, R, Python, Hugging Face, Transformers, Text Classification] 
 message: false 
 warning: false
 ---
@@ -38,7 +38,7 @@ library(reticulate)
 
 virtualenv_create("r-reticulate")
 
-packages <- c("transformers", "tensorflow", "torch", "torchvision", "torchaudio")
+packages <- c("transformers==4.37.2", "tensorflow", "torch", "torchvision", "torchaudio")
 
 virtualenv_install("r-reticulate", packages)
 ```
@@ -82,7 +82,7 @@ print(output)
 
 The classifier looks at the text and perform hypothesis testings: does the text (based on "common" understanding of the language) *entail* one hypothesis (e.g., it supports trading more with China) or the other (e.g., trading less with China)? It assigns probabilities to each hypothesis and the label with the highest probability is chosen (multiple labels are allowed as an option though). For example, the classifier correctly identify the text ("Many American jobs are shipped to Chinese factories.") as a statement that supports trading less with China.
 
-## Bonus 
+## Bonus
 
 To transport the result back to `R` for wrangling:
 
