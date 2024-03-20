@@ -2,7 +2,7 @@
 title: "Zero-shot classification with Hugging Face"
 author: "Brian Leung"
 date: "2024-02-23"
-categories: [code, R, Python, Hugging Face, Transformers, Text Classification] 
+categories: [R, Python, Hugging Face, Transformers, Text Classification] 
 message: false 
 warning: false
 ---

@@ -2,7 +2,7 @@
 title: "How to write a blog post with R or Python code?"
 author: "Brian Leung"
 date: "2024-02-21"
-categories: [news, code, R, Python]
+categories: [News, R, Python]
 message: false
 warning: false
 ---

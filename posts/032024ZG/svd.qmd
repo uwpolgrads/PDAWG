@@ -2,7 +2,7 @@
 title: "The Power of Singular Vector Decomposition: A Beginner's Guide"
 author: "Zhaowen Guo"
 date: "2024-03-20"
-categories: [code, R, Machine Learning, Principal Component Analysis, Topic Modeling] 
+categories: [R, Singular Vector Decomposition, Machine Learning, Principal Component Analysis, Topic Modeling] 
 format: html
 editor: visual
 ---

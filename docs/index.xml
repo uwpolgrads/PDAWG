@@ -14,7 +14,7 @@
 <item>
   <title>The Power of Singular Vector Decomposition: A Beginner’s Guide</title>
   <dc:creator>Zhaowen Guo</dc:creator>
-  <link>https://uwpolgrads.github.io/PDAWG/posts/051624ZG/svd.html</link>
+  <link>https://uwpolgrads.github.io/PDAWG/posts/032024ZG/svd.html</link>
   <description><![CDATA[ 
 
 
@@ -40,7 +40,7 @@
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://uwpolgrads.github.io/PDAWG/posts/051624ZG/svd_bipartite.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p><img src="https://uwpolgrads.github.io/PDAWG/posts/032024ZG/svd_bipartite.png" class="img-fluid figure-img" style="width:75.0%"></p>
 <figcaption class="figure-caption">Image credit: Tai-Danae Bradley at Math3ma</figcaption>
 </figure>
 </div>
@@ -441,7 +441,7 @@ font-style: inherit;">svd</span>(sparse_matrix)</span>
 <span id="cb23-4">})</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-  0.618   0.002   0.629 </code></pre>
+  0.593   0.002   0.595 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -454,7 +454,7 @@ font-style: inherit;">prcomp</span>(sparse_matrix)</span>
 <span id="cb25-3">})</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-  0.691   0.002   0.696 </code></pre>
+  0.693   0.003   0.712 </code></pre>
 </div>
 </div>
 <div class="cell">
@@ -482,7 +482,7 @@ background-color: null;
 font-style: inherit;">-</span> svd_time</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-  0.039   0.000   0.039 </code></pre>
+  0.039   0.001   0.040 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1">pca_time <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -505,7 +505,7 @@ background-color: null;
 font-style: inherit;">-</span> pca_time</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-  0.611   0.002   0.614 </code></pre>
+  0.617   0.003   0.627 </code></pre>
 </div>
 </div>
 </section>
@@ -1406,18 +1406,18 @@ font-style: inherit;">print</span>(top_terms)</span></code></pre></div>
 </section>
 
  ]]></description>
-  <category>code</category>
   <category>R</category>
+  <category>Singular Vector Decomposition</category>
   <category>Machine Learning</category>
   <category>Principal Component Analysis</category>
   <category>Topic Modeling</category>
-  <guid>https://uwpolgrads.github.io/PDAWG/posts/051624ZG/svd.html</guid>
+  <guid>https://uwpolgrads.github.io/PDAWG/posts/032024ZG/svd.html</guid>
   <pubDate>Wed, 20 Mar 2024 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Zero-shot classification with Hugging Face</title>
   <dc:creator>Brian Leung</dc:creator>
-  <link>https://uwpolgrads.github.io/PDAWG/posts/040424BL/huggingFace.html</link>
+  <link>https://uwpolgrads.github.io/PDAWG/posts/022324BL/huggingFace.html</link>
   <description><![CDATA[ 
 
 
@@ -1425,7 +1425,7 @@ font-style: inherit;">print</span>(top_terms)</span></code></pre></div>
 
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://uwpolgrads.github.io/PDAWG/posts/040424BL/hf-logo-with-title.png" class="img-fluid figure-img"></p>
+<p><img src="https://uwpolgrads.github.io/PDAWG/posts/022324BL/hf-logo-with-title.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 <section id="why-hugging-face" class="level2">
@@ -1464,7 +1464,7 @@ font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"transformers==4.37.2"</span>, <span class="st" style="color: #20794D;
+font-style: inherit;">"transformers"</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"tensorflow"</span>, <span class="st" style="color: #20794D;
 background-color: null;
@@ -1505,7 +1505,7 @@ font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"sentiment-analysis"</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>No model was supplied, defaulted to distilbert-base-uncased-finetuned-sst-2-english and revision af0f99b (https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english).
+<pre><code>No model was supplied, defaulted to distilbert/distilbert-base-uncased-finetuned-sst-2-english and revision af0f99b (https://huggingface.co/distilbert/distilbert-base-uncased-finetuned-sst-2-english).
 Using a pipeline without specifying a model name and revision in production is not recommended.</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">text <span class="op" style="color: #5E5E5E;
@@ -1614,7 +1614,7 @@ font-style: inherit;">values_from =</span> scores)</span></code></pre></div>
 1 Many American jobs are shipped to Chinese factories.  1.00 0.00000951</code></pre>
 </div>
 </div>
-<p>To suppress with a warning in <code>Python</code>:</p>
+<p>To deal with a warning:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="im" style="color: #00769E;
 background-color: null;
@@ -1656,13 +1656,12 @@ font-style: inherit;">#     print ("MPS device not found.")</span></span></code>
 </section>
 
  ]]></description>
-  <category>code</category>
   <category>R</category>
   <category>Python</category>
   <category>Hugging Face</category>
   <category>Transformers</category>
   <category>Text Classification</category>
-  <guid>https://uwpolgrads.github.io/PDAWG/posts/040424BL/huggingFace.html</guid>
+  <guid>https://uwpolgrads.github.io/PDAWG/posts/022324BL/huggingFace.html</guid>
   <pubDate>Fri, 23 Feb 2024 08:00:00 GMT</pubDate>
 </item>
 <item>
@@ -1861,8 +1860,7 @@ $ Petal.Width  &lt;dbl&gt; 0.246, 1.326, 2.026</code></pre>
 </section>
 
  ]]></description>
-  <category>news</category>
-  <category>code</category>
+  <category>News</category>
   <category>R</category>
   <category>Python</category>
   <guid>https://uwpolgrads.github.io/PDAWG/posts/022224BL/GettingStarted.html</guid>
