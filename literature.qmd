@@ -9,7 +9,7 @@ page-layout: full
 
 *Methodology*
 
--   RODRIGUEZ, PEDRO L., ARTHUR SPIRLING, and BRANDON M. STEWART. “Embedding Regression: Models for Context-Specific Description and Inference.” *American Political Science Review* 117, no. 4 (2023): 1255–74. [Link](https://doi.org/10.1017/S0003055422001228)
+-   Rodriguez, Pedro L., Arthur Spirling, and Brandon M. Stewart. “Embedding Regression: Models for Context-Specific Description and Inference.” *American Political Science Review* 117, no. 4 (2023): 1255–74. [Link](https://doi.org/10.1017/S0003055422001228)
 
 *Application*
 
