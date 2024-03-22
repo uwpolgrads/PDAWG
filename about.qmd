@@ -14,10 +14,10 @@ This website is a hub to centralize resources in a *collaborative and open sourc
 
 We invite presentations which usually fall within, but are not limited to, the following three styles:
 
--   *Code showcase*: Write up a reproducible script to introduce a technique (e.g., structural topic modeling), a R/Python package (e.g., transformers), or a workflow (How to pre-process text? How to run training/testing?)
+-   *Code showcase:* Write up a reproducible script to introduce a technique (e.g., structural topic modeling), a R/Python package (e.g., transformers), or a workflow (How to pre-process text? How to run training/testing?)
 
--   *Latest development in the literature: S*ummarize 1\~2 papers and present the latest advancements in how NLP techniques are being applied in social sciences. Lead a discussion in how we can incorporate those techniques in our field, and how they should be situated in the larger toolkit of NLP methods.
+-   *Latest development in the literature:* Summarize 1\~2 papers and present the latest advancements in how NLP techniques are being applied in social sciences. Lead a discussion in how we can incorporate those techniques in our field, and how they should be situated in the larger toolkit of NLP methods.
 
--   *Work in progress*: Circulate your work in progress that involves text as data. Present some preliminary descriptive statistics and dicuss your method of choice. Open up the floor for suggestions.
+-   *Work in progress:* Circulate your work in progress that involves text as data. Present some preliminary descriptive statistics and dicuss your method of choice. Open up the floor for suggestions.
 
-The working group is currently coordinated by Brian Leung (kpleung\[AT\]uw\[DOT\]edu), who can be contacted if you want to join us!
+The working group is currently coordinated by Brian Leung (kpleung\[AT\]uw\[DOT\]edu), who can be contacted for any interest to join this group or inquiries.
