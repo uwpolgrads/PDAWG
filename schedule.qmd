@@ -7,10 +7,10 @@ We meet every two weeks on **Thursday from 3:00 to 4:00 pm** Pacific Time. The f
 
 Please consult the schedule below for upcoming presentations:
 
-|              Date | Presenter       | Proposed topic                                                                           |
+|              Date | Presenter       | Proposed topic                                                                                           |
 |------------------:|----------------------------|--------------------------|
-|  April 4 / Week 2 | Brian Leung     | Welcoming / Zero-shot classification with Hugging Face & Transformers                    |
-| April 18 / Week 4 | Jihyeon Bae     | Limitations of BERT and Promises of Topic Modeling with UN General Debate Data           |
-|    May 2 / Week 6 | Tao Lin         | “Relatio: Text Semantics Capture Political and Economic Narratives” by Ash et al. (2024) |
-|   May 16 / Week 8 | Zhaowen Guo     | Fine-tuning a Pre-trained Language Model Using PyTorch                                   |
-|  May 30 / Week 10 | Nela Mrchkovska | Fine-tuning Topic Classification Model with Sermons Data                                 |
+|  April 4 / Week 2 | Brian Leung     | Welcoming / Zero-shot classification with Hugging Face & Transformers                                    |
+| April 18 / Week 4 | Jihyeon Bae     | Limitations of BERT and GloVe: Using UN General Debate Data                                              |
+|    May 2 / Week 6 | Tao Lin         | Code-showcasing “Relatio: Text Semantics Capture Political and Economic Narratives” by Ash et al. (2024) |
+|   May 16 / Week 8 | Zhaowen Guo     | Fine-tuning a Pre-trained Language Model Using PyTorch                                                   |
+|  May 30 / Week 10 | Nela Mrchkovska | Fine-tuning a Topic Classification Model with Sermons Data                                               |
