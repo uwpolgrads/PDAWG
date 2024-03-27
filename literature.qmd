@@ -3,7 +3,8 @@ title: "Literature"
 page-layout: full
 ---
 
-*Note: This page is a hub for academic papers that utilize NLP or related techniques with a strong social science focus. Please cite them in Chicago format.*
+*Note: This page is a hub for academic papers that utilize NLP or related techniques with a strong social science focus. Please cite them in Chicago format.\
+To add an item, edit the [literature document](https://github.com/uwpolgrads/PDAWG/blob/main/literature.qmd) here on Github.*
 
 ## Word embedding
 

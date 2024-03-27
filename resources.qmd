@@ -3,6 +3,8 @@ title: "Resources"
 page-layout: full
 ---
 
+*To add an item, edit the [resources document](https://github.com/uwpolgrads/PDAWG/blob/main/resources.qmd) here on Github.*
+
 ## Online course
 
 -   "Hands-on Transformers: Fine-Tune your own BERT and GPT." Data Science Summer School 2023 by Moritz Laurer, with [Code and Video](https://github.com/MoritzLaurer/summer-school-transformers-2023/tree/main).
