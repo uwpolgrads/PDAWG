@@ -4,7 +4,7 @@
     "href": "literature.html",
     "title": "Literature",
     "section": "",
-    "text": "Note: This page is a hub for academic papers that utilize NLP or related techniques with a strong social science focus. Please cite them in Chicago format.\nTo add an item, edit the literature document here on Github."
+    "text": "Note: This page is a hub for academic papers that utilize NLP or related techniques with a strong social science focus. Please cite them in Chicago format.\nTo add an item, commit changes to the literature document on Github."
   },
   {
     "objectID": "literature.html#word-embedding",
@@ -25,7 +25,14 @@
     "href": "resources.html",
     "title": "Resources",
     "section": "",
-    "text": "To add an item, edit the resources document here on Github."
+    "text": "To add an item, commit changes to the resources document on Github."
+  },
+  {
+    "objectID": "resources.html#short-talk",
+    "href": "resources.html#short-talk",
+    "title": "Resources",
+    "section": "Short talk",
+    "text": "Short talk\n\n“A User’s Guide to GPT and LLMs for Economics Research.” Princeton’s Bendheim Center for Finance by Kevin Bryan, with Video and PDF guide."
   },
   {
     "objectID": "resources.html#online-course",

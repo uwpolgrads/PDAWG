@@ -3,11 +3,11 @@ title: "Resources"
 page-layout: full
 ---
 
-*To add an item, edit the [resources document](https://github.com/uwpolgrads/PDAWG/blob/main/resources.qmd) here on Github.*
+*To add an item, commit changes to the [resources document](https://github.com/uwpolgrads/PDAWG/blob/main/resources.qmd) on Github.*
 
 ## Short talk
 
-- "A User’s Guide to GPT and LLMs for Economics Research." Princeton's Bendheim Center for Finance by Kevin Bryan, with [Video](https://bcf.princeton.edu/events/kevin-bryan-on-chatgpt-a-research-tool-in-economics/) and [PDF guide](https://bcf.princeton.edu/wp-content/uploads/2023/05/A_User_s_Guide_to_GPT_and_LLMs_for_Economic_Research.pdf).
+-   "A User’s Guide to GPT and LLMs for Economics Research." Princeton's Bendheim Center for Finance by Kevin Bryan, with [Video](https://bcf.princeton.edu/events/kevin-bryan-on-chatgpt-a-research-tool-in-economics/) and [PDF guide](https://bcf.princeton.edu/wp-content/uploads/2023/05/A_User_s_Guide_to_GPT_and_LLMs_for_Economic_Research.pdf).
 
 ## Online course
 
