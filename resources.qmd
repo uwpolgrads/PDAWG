@@ -7,11 +7,11 @@ page-layout: full
 
 ## Short talk
 
--   "A User’s Guide to GPT and LLMs for Economics Research." Princeton's Bendheim Center for Finance by Kevin Bryan, with [Video](https://bcf.princeton.edu/events/kevin-bryan-on-chatgpt-a-research-tool-in-economics/) and [PDF guide](https://bcf.princeton.edu/wp-content/uploads/2023/05/A_User_s_Guide_to_GPT_and_LLMs_for_Economic_Research.pdf).
+-   "A User’s Guide to GPT and LLMs for Economics Research." At Princeton's Bendheim Center for Finance by Kevin Bryan, with [Video](https://bcf.princeton.edu/events/kevin-bryan-on-chatgpt-a-research-tool-in-economics/) and [PDF guide](https://bcf.princeton.edu/wp-content/uploads/2023/05/A_User_s_Guide_to_GPT_and_LLMs_for_Economic_Research.pdf).
 
 ## Online course
 
--   "Hands-on Transformers: Fine-Tune your own BERT and GPT." Data Science Summer School 2023 by Moritz Laurer, with [Code and Video](https://github.com/MoritzLaurer/summer-school-transformers-2023/tree/main).
+-   "Hands-on Transformers: Fine-Tune your own BERT and GPT." At Data Science Summer School 2023 by Moritz Laurer, with [Code and Video](https://github.com/MoritzLaurer/summer-school-transformers-2023/tree/main).
 
 ## Cheat sheet
 
